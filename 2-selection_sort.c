@@ -12,7 +12,7 @@ void swap(int*, int*);
 void selection_sort(int *array, size_t size)
 {
 	size_t i, j;
-	int min_val_index, min_val, list_value_found = 0;
+	int min_val_index, min_val, is_list_value_found;
 
 	if (array == NULL || size == 1)
 		return;
@@ -20,19 +20,20 @@ void selection_sort(int *array, size_t size)
 	for (i = 0; i < size; i++)
 	{
 		min_val = array[i];
+		is_list_value_found = 0;
 		for (j = (i + 1); j < size; j++)
 		{
 			if (array[j] < min_val)
 			{
 				min_val = array[j];
 				min_val_index = j;
-				list_value_found = 1;
+				is_list_value_found = 1;
 			}
-			if (list_value_found == 1)
-			{
-				swap(&array[i], &array[min_val_index]);
-				print_array(array, size);
-			}
+		}
+		if (is_list_value_found == 1)
+		{
+			swap(&array[i], &array[min_val_index]);
+			print_array(array, size);
 		}
 	}
 }
