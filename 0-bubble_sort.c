@@ -1,5 +1,4 @@
 #include "sort.h"
-void swap(int*, int*);
 
 /**
  * bubble_sort - A function that sorts an array of integers in ascending order
