@@ -17,10 +17,18 @@ void counting_sort(int *array, size_t size)
 
 	if (array == NULL || size == 1)
 		return;
+	sorted_array = (int *)(malloc(size));
+	if (sorted_array == NULL)
+	{
+		return;
+	}
 	max_val = find_max(array, size);
 	bucket_array = (int *)malloc((max_val + 1) * sizeof(max_val));
 	if (bucket_array == NULL)
+	{
+		free(sorted_array);
 		return;
+	}
 	/*Initialize bucket_array with zero values.*/
 	for (i = 0; i < (size_t)(max_val + 1); i++)
 		bucket_array[i] = 0;
@@ -30,21 +38,15 @@ void counting_sort(int *array, size_t size)
 	for (i = 1; i < (size_t)(max_val + 1); i++)
 		bucket_array[i] += bucket_array[i - 1];
 	print_array(bucket_array, (size_t)(max_val + 1));
-	sorted_array = (int *)(malloc(size));
-	if (sorted_array == NULL)
-	{
-		free(bucket_array);
-		return;
-	}
 	for (i = 0; i < size; i++)
 	{
-		sorted_array[(bucket_array[array[i]]) - 1] = array[i];
-		bucket_array[array[i]] -= 1;
+		sorted_array[bucket_array[array[i]] - 1] = array[i];
+		bucket_array[array[i]]--;
 	}
 	for (i = 0; i < size; i++)
 		array[i] = sorted_array[i];
-	free(bucket_array);
 	free(sorted_array);
+	free(bucket_array);
 }
 
 /**
