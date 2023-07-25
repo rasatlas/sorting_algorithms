@@ -37,7 +37,10 @@ void counting_sort(int *array, size_t size)
 		return;
 	}
 	for (i = 0; i < size; i++)
+	{
 		sorted_array[(bucket_array[array[i]]) - 1] = array[i];
+		bucket_array[array[i]] -= 1;
+	}
 	for (i = 0; i < size; i++)
 		array[i] = sorted_array[i];
 	free(bucket_array);
