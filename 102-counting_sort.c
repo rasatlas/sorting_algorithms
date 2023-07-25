@@ -12,11 +12,12 @@ void counting_sort(int *array, size_t size)
 {
 	size_t i;
 	int *bucket_array, *sorted_array;
-	int max_val = array[0];
+	int max_val;
 
 	if (array == NULL || size == 1)
 		return;
 
+	max_val = array[0];
 	for (i = 1; i < size; i++)
 	{
 		if (array[i] > max_val)
