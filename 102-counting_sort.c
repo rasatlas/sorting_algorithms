@@ -39,7 +39,8 @@ void counting_sort(int *array, size_t size)
 	sorted_array = (int *)(malloc(size));
 	for (i = 0; i < size; i++)
 		sorted_array[(bucket_array[array[i]]) - 1] = array[i];
-	array = sorted_array;
+	for (i = 0; i < size; i++)
+		array[i] = sorted_array[i];
 	free(bucket_array);
 	free(sorted_array);
 }
