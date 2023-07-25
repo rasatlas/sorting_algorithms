@@ -19,9 +19,7 @@ void counting_sort(int *array, size_t size)
 		return;
 	sorted_array = (int *)(malloc(size));
 	if (sorted_array == NULL)
-	{
 		return;
-	}
 	max_val = find_max(array, size);
 	bucket_array = (int *)malloc((max_val + 1) * sizeof(max_val));
 	if (bucket_array == NULL)
