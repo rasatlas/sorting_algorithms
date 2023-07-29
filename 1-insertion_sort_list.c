@@ -1,5 +1,5 @@
 #include "sort.h"
-void swap(listint_t*, listint_t**, listint_t*);
+void swap(listint_t**, listint_t**, listint_t*);
 
 /**
  * insertion_sort_list - A function that sorts a doubly linked list of integers
@@ -34,7 +34,7 @@ void insertion_sort_list(listint_t **list)
  * @node2: pointer to second node to be swapped.
  */
 
-void swap(listint_t *head, listint_t **node1, listint_t *node2)
+void swap(listint_t **head, listint_t **node1, listint_t *node2)
 {
 	(*node1)->next = node2->next;
 	if (node2->next != NULL)
